@@ -6,7 +6,9 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const res = await fetch("http://localhost:9999/topics");
+  const res = await fetch("http://localhost:9999/topics", {
+    cache: "no-store",
+  });
   const topics = await res.json();
   return (
     <html>
@@ -25,15 +27,9 @@ export default async function RootLayout({ children }) {
         </ol>
         {children}
         <ul>
-          <li>
-            <a href="/create">Create</a>
-          </li>
-          <li>
-            <a href="/update/1">Update</a>
-          </li>
-          <li>
-            <input type="button" value="delete"></input>
-          </li>
+          <li><Link href="/create">Create</Link></li>
+          <li><Link href="/update/1">Update</Link> </li>
+          <li><input type="button" value="delete"/></li>
         </ul>
       </body>
     </html>
