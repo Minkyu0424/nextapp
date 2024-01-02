@@ -23,7 +23,7 @@ export function Control() {
                 const options = {
                   method: "DELETE",
                 };
-                fetch("http://localhost:9999/topics/" + id, options)
+                fetch(NEXT_PUBLIC_API_URL + "topics/" + id, options)
                   .then((res) => res.json())
                   .then((result) => {
                     router.push("/");
